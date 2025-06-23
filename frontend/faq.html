@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FAQs - Gastronome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/faq.css" />
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-elements">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-question-circle"></i>
+                        <div class="logo-ring"></div>
+                    </div>
+                    <span class="logo-text">Gastronome</span>
+                </div>
+                <nav class="navigation">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                    <a href="index.html#menu" class="nav-link">Menu</a>
+                    <a href="reservation.html" class="nav-link">Reservations</a>
+                    <a href="order.html" class="nav-link">Order</a>
+                    <a href="faq.html" class="nav-link active">FAQs</a>
+                </nav>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- FAQ Section -->
+    <main class="faq-main">
+        <div class="container">
+            <div class="faq-card">
+                <div class="faq-header">
+                    <div class="faq-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Help Center</span>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h1 class="faq-title">Frequently Asked <span class="accent-text">Questions</span></h1>
+                    <p class="faq-subtitle">Find answers to common questions about our fine dining experience</p>
+                </div>
+
+                <div class="faq-search">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search for answers..." />
+                    </div>
+                </div>
+
+                <div class="faq-categories">
+                    <button class="category-btn active" data-category="all">All Questions</button>
+                    <button class="category-btn" data-category="reservations">Reservations</button>
+                    <button class="category-btn" data-category="menu">Menu & Dining</button>
+                    <button class="category-btn" data-category="orders">Orders & Delivery</button>
+                    <button class="category-btn" data-category="general">General</button>
+                </div>
+
+                <div class="faq-container">
+                    <!-- Reservations -->
+                    <div class="faq-item" data-category="reservations">
+                        <button class="faq-question">
+                            <span class="question-text">Do I need to make a reservation?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>Reservations are highly recommended, especially for dinner service and weekends. While we do accept walk-ins based on availability, reserving a table ensures you'll have the perfect dining experience at your preferred time.</p>
+                                <div class="answer-highlight">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Reserve up to 30 days in advance</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="reservations">
+                        <button class="faq-question">
+                            <span class="question-text">How far in advance can I make a reservation?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>You can make reservations up to 30 days in advance. For special occasions and holidays, we recommend booking as early as possible as these dates fill up quickly.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="reservations">
+                        <button class="faq-question">
+                            <span class="question-text">Can I cancel or modify my reservation?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>Yes, you can cancel or modify your reservation up to 2 hours before your scheduled time. Please call us directly or use our online reservation system to make changes.</p>
+                                <div class="answer-highlight">
+                                    <i class="fas fa-phone"></i>
+                                    <span>Call us at (555) 123-4567</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Menu & Dining -->
+                    <div class="faq-item" data-category="menu">
+                        <button class="faq-question">
+                            <span class="question-text">Do you offer vegetarian or vegan options?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>We have an extensive selection of vegetarian and vegan dishes crafted with the same attention to detail as our traditional menu. Our chefs use locally-sourced, organic ingredients to create exceptional plant-based cuisine.</p>
+                                <div class="answer-highlight">
+                                    <i class="fas fa-leaf"></i>
+                                    <span>Dedicated vegan menu available</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="menu">
+                        <button class="faq-question">
+                            <span class="question-text">Do you accommodate food allergies and dietary restrictions?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>Yes, we take food allergies and dietary restrictions very seriously. Please inform us of any allergies when making your reservation or speak with your server. Our kitchen can accommodate most dietary needs with advance notice.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="menu">
+                        <button class="faq-question">
+                            <span class="question-text">Do you have a children's menu?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>We offer a specially curated children's menu featuring refined versions of classic favorites, prepared with the same high-quality ingredients as our main menu. We welcome families and can accommodate young diners.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orders & Delivery -->
+                    <div class="faq-item" data-category="orders">
+                        <button class="faq-question">
+                            <span class="question-text">Can I modify my order after placing it?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>You can modify your order within 10 minutes of placing it by calling us directly. After this window, modifications may not be possible as our kitchen begins preparation immediately to ensure freshness.</p>
+                                <div class="answer-highlight">
+                                    <i class="fas fa-clock"></i>
+                                    <span>10-minute modification window</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="orders">
+                        <button class="faq-question">
+                            <span class="question-text">What are your delivery hours?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>We offer delivery Tuesday through Sunday from 5:00 PM to 9:30 PM. Delivery is available within a 5-mile radius of our restaurant. Orders typically arrive within 45-60 minutes.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="orders">
+                        <button class="faq-question">
+                            <span class="question-text">Is there a minimum order for delivery?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>Yes, we have a $50 minimum order requirement for delivery to ensure the quality and freshness of our cuisine during transport. This helps us maintain our high standards for the delivery experience.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- General -->
+                    <div class="faq-item" data-category="general">
+                        <button class="faq-question">
+                            <span class="question-text">Is parking available?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>Yes, we offer complimentary valet parking for all our guests. Our valet service is available during all operating hours, and we also have a limited number of self-parking spaces available.</p>
+                                <div class="answer-highlight">
+                                    <i class="fas fa-car"></i>
+                                    <span>Complimentary valet service</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="general">
+                        <button class="faq-question">
+                            <span class="question-text">What is your dress code?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>We maintain a smart casual to business casual dress code. While jackets are not required, we ask that guests dress appropriately for our upscale dining atmosphere. No athletic wear, flip-flops, or overly casual attire please.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="general">
+                        <button class="faq-question">
+                            <span class="question-text">Do you host private events?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>Yes, we offer private dining rooms and can accommodate events for 10-50 guests. Our events team will work with you to create a customized menu and experience for your special occasion.</p>
+                                <div class="answer-highlight">
+                                    <i class="fas fa-users"></i>
+                                    <span>Contact our events team for details</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-contact">
+                    <div class="contact-card">
+                        <h3>Still have questions?</h3>
+                        <p>Our team is here to help you with any additional inquiries.</p>
+                        <div class="contact-methods">
+                            <a href="tel:+15551234567" class="contact-btn">
+                                <i class="fas fa-phone"></i>
+                                <span>Call Us</span>
+                            </a>
+                            <a href="mailto:info@gastronome.com" class="contact-btn">
+                                <i class="fas fa-envelope"></i>
+                                <span>Email Us</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-utensils"></i>
+                    <span>Gastronome</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <p class="copyright">© 2025 Gastronome, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/faq.js"></script>
+</body>
+</html>

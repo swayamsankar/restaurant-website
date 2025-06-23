@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Order - Gastronome</title>
+    <link rel="stylesheet" href="css/order.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-elements">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-question-circle"></i>
+                        <div class="logo-ring"></div>
+                    </div>
+                    <span class="logo-text">Gastronome</span>
+                </div>
+                <nav class="navigation">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                    <a href="index.html#menu" class="nav-link">Menu</a>
+                    <a href="reservation.html" class="nav-link">Reservations</a>
+                    <a href="order.html" class="nav-link">Order</a>
+                    <a href="faq.html" class="nav-link">FAQs</a>
+                </nav>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Order Section -->
+    <main class="order-main">
+        <div class="container">
+            <div class="order-card">
+                <div class="order-header">
+                    <div class="order-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Fine Dining</span>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h1 class="order-title">Craft Your <span class="accent-text">Culinary</span> Experience</h1>
+                    <p class="order-subtitle">Select from our award-winning menu for delivery or pickup</p>
+                </div>
+
+                <form class="order-form" id="orderForm">
+                    <div class="form-columns">
+                        <div class="form-column">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <div class="input-container">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="name" name="name" required placeholder="Enter your full name" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <div class="input-container">
+                                    <i class="fas fa-phone"></i>
+                                    <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <div class="input-container">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="email" id="email" name="email" required placeholder="your@email.com" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-column">
+                            <div class="form-group">
+                                <label for="address">Delivery Address</label>
+                                <div class="input-container">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <input type="text" id="address" name="address" placeholder="Optional - for delivery" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="time">Preferred Time</label>
+                                <div class="input-container">
+                                    <i class="fas fa-clock"></i>
+                                    <input type="time" id="time" name="time" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="orderType">Order Type</label>
+                                <div class="input-container select-container">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <select id="orderType" name="orderType" required>
+                                        <option value="">Select order type</option>
+                                        <option value="delivery">Delivery</option>
+                                        <option value="pickup">Pickup</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-section">
+                        <h2 class="section-title">Select Your Dishes</h2>
+                        <div class="menu-items menu-container">
+                            <div class="menu-item" data-id="grilled-salmon" data-price="32">
+                                <div class="menu-item-image">
+                                    <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsbW9ufGVufDB8fDB8fHww" alt="Grilled Salmon">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Grilled Salmon</h3>
+                                    <p>Wild-caught salmon with lemon herb butter and seasonal vegetables</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹32</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="paneer-butter-masala" data-price="24">
+                                <div class="menu-item-image">
+                                    <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGFuZWVyJTIwYnV0dGVyJTIwbWFzYWxhfGVufDB8fDB8fHww" alt="Paneer Butter Masala">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Paneer Butter Masala</h3>
+                                    <p>Cottage cheese cubes in a rich tomato and butter sauce with Indian spices</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹24</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="chicken-tikka-masala" data-price="28">
+                                <div class="menu-item-image">
+                                    <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hpY2tlbiUyMHRpa2thfGVufDB8fDB8fHww" alt="Chicken Tikka Masala">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Chicken Tikka Masala</h3>
+                                    <p>Tender chicken pieces in a creamy tomato sauce with aromatic spices</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹28</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="chocolate-cake" data-price="14">
+                                <div class="menu-item-image">
+                                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2hvY29sYXRlJTIwY2FrZXxlbnwwfHwwfHx8MA%3D%3D" alt="Chocolate Cake">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Chocolate Cake</h3>
+                                    <p>Decadent chocolate cake with ganache frosting and fresh berries</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹14</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="iced-tea" data-price="8">
+                                <div class="menu-item-image">
+                                    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aWNlZCUyMHRlYXxlbnwwfHwwfHx8MA%3D%3D" alt="Iced Tea">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Iced Tea</h3>
+                                    <p>Refreshing house-made iced tea with mint and lemon</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹8</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-id="caesar-salad" data-price="16">
+                                <div class="menu-item-image">
+                                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsYWR8ZW58MHx8MHx8fDA%3D" alt="Caesar Salad">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Caesar Salad</h3>
+                                    <p>Crisp romaine lettuce, parmesan cheese, croutons, and classic Caesar dressing</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹16</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="mushroom-risotto" data-price="22">
+                                <div class="menu-item-image">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Mushroom%20Risotto_create%20this%20food%20image%20landscape.jpg-xSltZ1H6zS3ZhlT14AsjCzPGTuQU4w.jpeg" alt="Mushroom Risotto">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Mushroom Risotto</h3>
+                                    <p>Creamy Arborio rice with wild mushrooms, parmesan, and truffle oil</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹22</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="keema-matar" data-price="22">
+                                <div class="menu-item-image">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Keema%20Matar_create%20this%20food%20image%20landscape.jpg-ZCinNMnVXykBdbt6RTBQAVqGHa4zJv.jpeg" alt="Keema Matar">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Keema Matar</h3>
+                                    <p>Spiced minced lamb with green peas, served with fragrant basmati rice</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹22</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="chicken-chettinad" data-price="26">
+                                <div class="menu-item-image">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Chicken%20Chettinad.jpg-k6Ys56PLaHSKWrdVNUZbVvwLi13Qlb.jpeg" alt="Chicken Chettinad">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Chicken Chettinad</h3>
+                                    <p>Spicy South Indian chicken curry with a rich blend of traditional spices</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹26</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-item" data-id="rajma-masala" data-price="18">
+                                <div class="menu-item-image">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Rajma%20Masala.jpg-MmITCfdnbO7E0TaGZUwEnAPadUEsEy.jpeg" alt="Rajma Masala">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Rajma Masala</h3>
+                                    <p>Classic North Indian kidney bean curry, slow-cooked with aromatic spices and served with steamed rice</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹18</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div class="menu-item" data-id="rogan-josh" data-price="28">
+                                <div class="menu-item-image">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Rogan%20Josh.jpg-bnzWL8qGQDL2dyRqc15ctQiq7nliU4.jpeg" alt="Rogan Josh">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Rogan Josh</h3>
+                                    <p>Tender lamb pieces in a rich, spicy tomato sauce</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹28</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="garlic-naan" data-price="8">
+                                <div class="menu-item-image">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2a0100c3-b2fa-4670-a4c5-9a5e4b9947fa.jpg-1yM1uKaizxtv6xJVoeSx7X0UWw15SJ.jpeg" alt="Garlic Naan">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Garlic Naan</h3>
+                                    <p>Soft, buttery naan infused with garlic and herbs</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹8</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="dahi-puri" data-price="12">
+                                <div class="menu-item-image">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/72a3f5e0-0f31-4f1d-9577-f8b31b6767df.jpg-M5w9ZjanGvFAiGZmiAUOCNvfTOIcQ8.jpeg" alt="Dahi Puri">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Jeera Rice</h3>
+                                    <p>Fragrant basmati rice delicately flavored with roasted cumin seeds</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹12</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="hara-bhara-kabab" data-price="25">
+                                <div class="menu-item-image">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/9275353f-9640-46ce-bc0c-19ead141100d.jpg-JEIoThoNQHT8TAUfVZR3h87MpojzhR.jpeg" alt="Hara Bhara Kabab">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Hara Bhara Kabab</h3>
+                                    <p>Spicy green kababs made with spinach, peas, and spices</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹25</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="onion-bhaji" data-price="10">
+                                <div class="menu-item-image">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/6a632682-f4f9-4598-ba06-5e98289e107b.jpg-fflnkP6ciOpoBAmBqoGcIsLQXfU6uO.jpeg" alt="Onion Bhaji">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Onion Bhaji</h3>
+                                    <p>Crispy onion fritters served with a side of tangy chutney</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹10</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="aloo-tikki" data-price="18">
+                                <div class="menu-item-image">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Aloo%20Tikki_create%20image%20landscape.jpg-aQQNGCBt625gBahecimoi5PGMR5wuN.jpeg" alt="Aloo Tikki">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Aloo Tikki</h3>
+                                    <p>Crispy potato patties served with a side of chutney</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹18</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="dal-makhani" data-price="22">
+                                <div class="menu-item-image">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/db31758e-2998-45ea-9616-9cc8facc501a.jpg-06VA6EOp2TuKTlgSrU74hSHNRBXvQq.jpeg" alt="Dal Makhani">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Dal Makhani</h3>
+                                    <p>Black lentils and kidney beans in a creamy tomato sauce</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹22</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="kadai-paneer" data-price="24">
+                                <div class="menu-item-image">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/9edd1f98-954a-4caa-820c-468d432e7be8.jpg-G9mMXsx3hpP9cxCVLhUkJkAtLHG5Gc.jpeg" alt="Kadai Paneer">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Kadai Paneer</h3>
+                                    <p>Indian cheese cooked in a spicy tomato sauce</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹24</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="butter-chicken" data-price="32">
+                                <div class="menu-item-image">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Butter%20Chicken.jpg-KNRbnpAIUUAWCexd9J2f7YFuEPDVKZ.jpeg" alt="Butter Chicken">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Butter Chicken</h3>
+                                    <p>Tender chicken in a rich, creamy tomato-based sauce</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹32</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="chicken-korma" data-price="29">
+                                <div class="menu-item-image">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Chicken%20Korma.jpg-6ZZv0rJxsaDq46gYGjWUoKhNVsxHvs.jpeg" alt="Chicken Korma">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Chicken Korma</h3>
+                                    <p>Tender chicken pieces in a mild, creamy sauce</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹29</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-id="fish-amritsari" data-price="28">
+                                <div class="menu-item-image">
+                                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/50f03796-8873-4e4e-a19a-06be8f2b6af9.jpg-gvnamcvrFAefx6tqnxsBsSiBxylEyx.jpeg" alt="Fish Amritsari">
+                                </div>
+                                <div class="menu-item-content">
+                                    <h3>Fish Amritsari</h3>
+                                    <p>Crispy fried fish marinated in traditional Amritsari spices</p>
+                                    <div class="menu-item-footer">
+                                        <span class="menu-item-price">₹28</span>
+                                        <button type="button" class="add-to-order">Add to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-summary" id="orderSummary">
+                        <h2 class="section-title">Your Order</h2>
+                        <div class="order-items" id="orderItems">
+                            <p class="empty-order">Your order is empty. Please add items from the menu.</p>
+                        </div>
+                        <div class="order-total">
+                            <div class="total-row">
+                                <span>Subtotal:</span>
+                                <span id="subtotal">$0.00</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Tax (8%):</span>
+                                <span id="tax">$0.00</span>
+                            </div>
+                            <div class="total-row total-final">
+                                <span>Total:</span>
+                                <span id="total">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group special-instructions">
+                        <label for="instructions">Special Instructions</label>
+                        <div class="input-container">
+                            <i class="fas fa-comment-alt"></i>
+                            <textarea id="instructions" name="instructions" placeholder="Allergies, preferences, or special requests"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="order-submit" id="submitOrder">
+                            <span class="btn-content">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Complete Order</span>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+
+                <div id="orderConfirmation" class="order-confirmation">
+                    <div class="confirmation-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>Order Confirmed!</h2>
+                    <p>Your order has been received and is being prepared.</p>
+                    <div class="confirmation-details" id="confirmationDetails"></div>
+                    <p class="confirmation-note">A confirmation has been sent to your email.</p>
+                    <button class="new-order-btn" id="newOrderBtn">
+                        <i class="fas fa-plus"></i>
+                        Place Another Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-utensils"></i>
+                    <span>Gastronome</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <p class="copyright">© 2025 Gastronome, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/order.js"></script>
+</body>
+</html>
