@@ -1,4 +1,4 @@
-// Global variables
+ // Global variables
 let orderItems = [];
 let subtotal = 0;
 let tax = 0;
@@ -164,7 +164,7 @@ function updateOrderSummary() {
                     </div>
                     <div>
                         <div class="order-item-name">${item.name}</div>
-                        <div class="order-item-price">$${item.price.toFixed(2)}</div>
+                        <div class="order-item-price">₹${item.price.toFixed(2)}</div>
                     </div>
                 </div>
                 <div class="order-item-quantity">
@@ -172,7 +172,7 @@ function updateOrderSummary() {
                     <span class="quantity-value">${item.quantity}</span>
                     <button type="button" class="quantity-btn increase-quantity" data-id="${item.id}">+</button>
                 </div>
-                <div class="order-item-price">$${itemTotal.toFixed(2)}</div>
+                <div class="order-item-price">₹${itemTotal.toFixed(2)}</div>
                 <button type="button" class="remove-item" data-id="${item.id}">
                     <i class="fas fa-times"></i>
                 </button>
@@ -206,9 +206,9 @@ function updateOrderSummary() {
     total = subtotal + tax;
     
     // Update summary elements
-    subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
-    taxElement.textContent = `$${tax.toFixed(2)}`;
-    totalElement.textContent = `$${total.toFixed(2)}`;
+    subtotalElement.textContent = `₹${subtotal.toFixed(2)}`;
+    taxElement.textContent = `₹${tax.toFixed(2)}`;
+    totalElement.textContent = `₹${total.toFixed(2)}`;
     
     // Animate total
     totalElement.style.transform = 'scale(1.1)';
@@ -386,7 +386,7 @@ function showOrderConfirmation() {
                         <span class="confirmation-item-name">${item.name}</span>
                         <span class="confirmation-item-quantity">x${item.quantity}</span>
                     </div>
-                    <span class="confirmation-item-price">$${(item.price * item.quantity).toFixed(2)}</span>
+                    <span class="confirmation-item-price">₹${(item.price * item.quantity).toFixed(2)}</span>
                 </div>
             `).join('')}
         </div>
@@ -394,15 +394,15 @@ function showOrderConfirmation() {
         <div class="confirmation-total">
             <div class="confirmation-total-row">
                 <span>Subtotal:</span>
-                <span>$${orderData.subtotal.toFixed(2)}</span>
+                <span>₹${orderData.subtotal.toFixed(2)}</span>
             </div>
             <div class="confirmation-total-row">
                 <span>Tax (8%):</span>
-                <span>$${orderData.tax.toFixed(2)}</span>
+                <span>₹${orderData.tax.toFixed(2)}</span>
             </div>
             <div class="confirmation-total-row confirmation-final-total">
                 <span>Total:</span>
-                <span>$${orderData.total.toFixed(2)}</span>
+                <span>₹${orderData.total.toFixed(2)}</span>
             </div>
         </div>
         
