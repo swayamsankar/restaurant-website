@@ -3,6 +3,7 @@ let orderItems = [];
 let subtotal = 0;
 let tax = 0;
 let total = 0;
+// let selectedPayment = null; // Removed as per instruction
 
 // DOM Elements
 const orderForm = document.getElementById('orderForm');
@@ -14,10 +15,16 @@ const totalElement = document.getElementById('total');
 const orderConfirmation = document.getElementById('orderConfirmation');
 const confirmationDetails = document.getElementById('confirmationDetails');
 const newOrderBtn = document.getElementById('newOrderBtn');
+// const paymentSection = document.getElementById('paymentSection'); // Removed as per instruction
+// const payNowBtn = document.getElementById('payNowBtn'); // Removed as per instruction
+// const paymentOptions = document.querySelectorAll('.payment-option'); // Removed as per instruction
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🍽️ Gastronome Order System Initialized');
+    
+    // Inject all necessary dynamic styles once
+    injectDynamicStyles();
     
     // Setup event listeners
     setupEventListeners();
@@ -68,6 +75,9 @@ function setupEventListeners() {
             }
         });
     });
+
+    // Removed: Setup payment section event listeners
+    // setupPaymentListeners();
 }
 
 // Setup phone number formatting
@@ -289,7 +299,7 @@ function handleFormSubmission(e) {
     `;
     submitButton.disabled = true;
     
-    // Simulate API call
+    // After processing, show confirmation directly (payment section removed)
     setTimeout(() => {
         showOrderConfirmation();
     }, 2000);
@@ -326,7 +336,8 @@ function showOrderConfirmation() {
         items: orderItems,
         subtotal: subtotal,
         tax: tax,
-        total: total
+        total: total,
+        // paymentMethod: selectedPayment // Removed as per instruction
     };
     
     // Generate order number
@@ -370,6 +381,7 @@ function showOrderConfirmation() {
                 <strong>Time:</strong>
                 <span>${formattedTime}</span>
             </div>
+            <!-- Removed: Payment Method row -->
             ${orderData.instructions !== 'None' ? `
             <div class="confirmation-row">
                 <strong>Special Instructions:</strong>
@@ -415,13 +427,127 @@ function showOrderConfirmation() {
     // Update confirmation details
     confirmationDetails.innerHTML = detailsHTML;
     
-    // Hide form and show confirmation
-    orderForm.style.display = 'none';
+    // Hide order form and show confirmation (payment section removed)
+    orderForm.style.display = "none";
     orderConfirmation.style.display = 'block';
     
-    // Add CSS for confirmation details
+    // Scroll to confirmation
+    orderConfirmation.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Reset order
+function resetOrder() {
+    // Clear order items
+    orderItems = [];
+    
+    // Reset form
+    orderForm.reset();
+    
+    // Update order summary
+    updateOrderSummary();
+    
+    // Remove selected class from menu items
+    document.querySelectorAll('.menu-item').forEach(item => {
+        item.classList.remove('selected');
+    });
+    
+    // Show form and hide confirmation
+    orderForm.style.display = 'block';
+    orderConfirmation.style.display = 'none';
+    
+    // Removed: Hide payment section and reset its state
+    // paymentSection.style.display = "none";
+    // selectedPayment = null;
+    // paymentOptions.forEach(o => o.classList.remove("selected"));
+    // payNowBtn.disabled = true;
+    
+    // Reset submit button
+    const submitButton = document.getElementById('submitOrder');
+    submitButton.innerHTML = `
+        <span class="btn-content">
+            <i class="fas fa-check-circle"></i>
+            <span>Complete Order</span>
+        </span>
+    `;
+    submitButton.disabled = false;
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Show notification
+function showNotification(message, type = 'info') {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    
+    // Set icon based on type
+    let icon = 'info-circle';
+    if (type === 'success') icon = 'check-circle';
+    if (type === 'error') icon = 'exclamation-circle';
+    
+    notification.innerHTML = `
+        <i class="fas fa-${icon}"></i>
+        <span>${message}</span>
+    `;
+    
+    // Add to document
+    document.body.appendChild(notification);
+    
+    // Remove after 3.5 seconds
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+        }
+    }, 3500);
+}
+
+// New function to inject all dynamic styles once
+function injectDynamicStyles() {
     const style = document.createElement('style');
     style.textContent = `
+        /* Notification Styles */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: slideIn 0.3s ease, fadeOut 0.3s ease 3s forwards;
+            max-width: 300px;
+        }
+        
+        .notification.info {
+            background-color: #2196F3;
+            color: white;
+        }
+        
+        .notification.success {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .notification.error {
+            background-color: #F44336;
+            color: white;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; transform: translateX(100%); }
+        }
+
+        /* Confirmation Section Styles */
         .confirmation-order-details {
             margin-bottom: 30px;
         }
@@ -504,124 +630,8 @@ function showOrderConfirmation() {
             margin-top: 20px;
             color: var(--success-green);
         }
-    `;
-    document.head.appendChild(style);
-    
-    // Scroll to confirmation
-    orderConfirmation.scrollIntoView({ behavior: 'smooth' });
-}
 
-// Reset order
-function resetOrder() {
-    // Clear order items
-    orderItems = [];
-    
-    // Reset form
-    orderForm.reset();
-    
-    // Update order summary
-    updateOrderSummary();
-    
-    // Remove selected class from menu items
-    document.querySelectorAll('.menu-item').forEach(item => {
-        item.classList.remove('selected');
-    });
-    
-    // Show form and hide confirmation
-    orderForm.style.display = 'block';
-    orderConfirmation.style.display = 'none';
-    
-    // Reset submit button
-    const submitButton = document.getElementById('submitOrder');
-    submitButton.innerHTML = `
-        <span class="btn-content">
-            <i class="fas fa-check-circle"></i>
-            <span>Complete Order</span>
-        </span>
-    `;
-    submitButton.disabled = false;
-    
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// Show notification
-function showNotification(message, type = 'info') {
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    
-    // Set icon based on type
-    let icon = 'info-circle';
-    if (type === 'success') icon = 'check-circle';
-    if (type === 'error') icon = 'exclamation-circle';
-    
-    notification.innerHTML = `
-        <i class="fas fa-${icon}"></i>
-        <span>${message}</span>
-    `;
-    
-    // Add to document
-    document.body.appendChild(notification);
-    
-    // Add CSS for notification
-    const style = document.createElement('style');
-    style.textContent = `
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 20px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            animation: slideIn 0.3s ease, fadeOut 0.3s ease 3s forwards;
-            max-width: 300px;
-        }
-        
-        .notification.info {
-            background-color: #2196F3;
-            color: white;
-        }
-        
-        .notification.success {
-            background-color: #4CAF50;
-            color: white;
-        }
-        
-        .notification.error {
-            background-color: #F44336;
-            color: white;
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; transform: translateX(100%); }
-        }
-    `;
-    document.head.appendChild(style);
-    
-    // Remove after 3.5 seconds
-    setTimeout(() => {
-        if (notification.parentNode) {
-            notification.parentNode.removeChild(notification);
-        }
-    }, 3500);
-}
-
-// Add window load event
-window.addEventListener('load', function() {
-    // Add CSS for initial animation
-    const style = document.createElement('style');
-    style.textContent = `
+        /* Order Card Initial Animation Styles */
         .order-card {
             opacity: 0;
             transform: translateY(30px);
@@ -629,4 +639,51 @@ window.addEventListener('load', function() {
         }
     `;
     document.head.appendChild(style);
-});
+}
+
+// The window.addEventListener('load') block is removed as its style injection is now handled by injectDynamicStyles().
+
+// Removed: Setup payment section event listeners (new function)
+// function setupPaymentListeners() {
+//     // Add click events to payment options
+//     paymentOptions.forEach(option => { // Using the constant
+//         option.addEventListener("click", function () {
+//             paymentOptions.forEach(o => o.classList.remove("selected")); // Using the constant
+
+//             this.classList.add("selected");
+
+//             selectedPayment = this.getAttribute("data-method");
+
+//             payNowBtn.disabled = false; // Using the constant
+//         });
+//     });
+
+//     // Pay button
+//     payNowBtn.addEventListener("click", () => { // Using the constant
+//         processPayment();
+//     });
+// }
+
+// Removed: showPaymentSection function
+// function showPaymentSection() {
+//     // Hide order form
+//     orderForm.style.display = "none";
+
+//     // Show payment section
+//     paymentSection.style.display = "block"; // Using the constant
+
+//     // Reset payment selection state when showing the section
+//     selectedPayment = null;
+//     paymentOptions.forEach(o => o.classList.remove("selected")); // Using the constant
+//     payNowBtn.disabled = true; // Using the constant
+// }
+
+// Removed: Placeholder for processPayment function
+// function processPayment() {
+//     payNowBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Processing Payment...`; // Using the constant
+//     payNowBtn.disabled = true; // Using the constant
+
+//     setTimeout(() => {
+//         showOrderConfirmation();
+//     }, 2000);
+// }

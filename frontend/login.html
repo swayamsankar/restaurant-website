@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="css/auth.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="auth-container">
+    <h1 class="auth-title">Welcome Back!</h1>
+    <p class="auth-subtitle">Please log in to continue.</p>
+    <form id="login-form" onsubmit="event.preventDefault(); login();">
+      <div class="input-group">
+        <input id="email" type="email" placeholder="Email" required>
+      </div>
+      <div class="input-group">
+        <input id="password" type="password" placeholder="Password" required>
+      </div>
+      <button type="submit" class="auth-btn">Login</button>
+    </form>
+    <div class="auth-footer">
+      <p>Don't have an account? <a href="signup.html">Signup</a></p>
+      <p><a href="index.html" class="back-to-home-btn">Back to Home</a></p>
+    </div>
+  </div>
+
+  <script src="js/auth.js" defer></script>
+</body>
+</html>

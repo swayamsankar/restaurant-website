@@ -1,32 +1,40 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const path = require('path');
-require('./db');
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const path = require("path");
+
+// ⭐ Load environment variables BEFORE loading routes
+dotenv.config();
+
+// ⭐ Connect to MySQL
+require("./db");
+
+// ⭐ Import Routes AFTER dotenv is loaded
+const authRoutes = require("./routes/auth");
+const chatRoutes = require("./routes/chat");
+const orderRoutes = require("./routes/order");
+const menuRoutes = require("./routes/menu");
 
 const app = express();
 
-// Middleware
+// ⭐ Middlewares
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json()); // Parses JSON requests
 
-// Serve frontend static files
-app.use(express.static(path.join(__dirname, '../frontend')));
-
-// Routes
-app.use('/api/menu', require('./routes/menu'));
-app.use('/api/reservations', require('./routes/reservations'));
-app.use('/api/contact', require('./routes/contact'));
-
-// Default route → send index.html
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/index.html'));
+// ⭐ Health Check
+app.get("/", (req, res) => {
+  res.send("Restaurant API running");
 });
 
-// Start server
-const PORT = 5000;
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+// ⭐ API Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/chat", chatRoutes);
+app.use("/api/order", orderRoutes);
+app.use("/api/menu", menuRoutes);
 
+// ⭐ OPTIONAL: Serve frontend (disabled unless needed)
+// app.use(express.static(path.join(__dirname, "..", "frontend")));
 
+// ⭐ Start Server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

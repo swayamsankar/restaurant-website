@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gastronome - Fine Dining Restaurant</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css"> <!-- Added chatbot CSS -->
+    <!-- Font Awesome for icons like the chatbot close button -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -24,6 +27,8 @@
                     <a href="#contact" class="nav-link">Contact</a>
                     <a href="#faq" class="nav-link">FAQ</a>
                     <a href="company.html" class="nav-link">About</a>
+                    <a href="login.html" class="nav-link" id="loginLink">Login</a>
+                    <a href="#" class="nav-link" id="logoutLink" style="display:none;">Logout</a>
                 </nav>
                 
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
@@ -52,7 +57,9 @@
             <a href="#reservations" class="mobile-nav-link">Reservations</a>
             <a href="#contact" class="mobile-nav-link">Contact</a>
             <a href="#faq" class="mobile-nav-link">FAQ</a> 
-            <a href="company.html" class="nav-link">About</a><!-- Added FAQ link -->
+            <a href="company.html" class="mobile-nav-link">About</a><!-- Added FAQ link -->
+            <a href="login.html" class="mobile-nav-link" id="mobileLoginLink">Login</a>
+            <a href="#" class="mobile-nav-link" id="mobileLogoutLink" style="display:none;">Logout</a>
         </nav>
     </div>
     <!-- Hero Section -->
@@ -64,7 +71,7 @@
                     Explore our diverse menu offerings,<br class="desktop-break">
                     featuring locally-sourced ingredients and
                 </p>
-                <a href="reservation.html" class="cta-button">Reserve Your Table</a>
+                <a href="#" class="cta-button" onclick="checkAuthAndGo('reservation.html')">Reserve Your Table</a>
             </div>
         </div>
     </section>
@@ -105,7 +112,7 @@
                 <p class="specials-description">
                     Indulge in our signature dishes, prepared with the freshest local produce and expertly-crafted recipes. From our tender, juicy steaks to our flavorful seafood entrees, our specials showcase the best of our culinary expertise
                 </p>
-                <a href="order.html" class="cta-button-red">Order Now</a>
+                <a href="#" class="cta-button-red" onclick="checkAuthAndGo('order.html')">Order Now</a>
             </div>
         </div>
     </section>
@@ -248,6 +255,28 @@
         </div>
     </footer>
 
+    <!-- CHATBOT WIDGET -->
+    <div id="chatbot-icon">
+        <i class="fas fa-comment"></i>
+    </div>
+
+    <div id="chatbot-box">
+        <div class="chatbot-header">
+            <span>Gastronome Assistant</span>
+            <i id="chatbot-close" class="fas fa-times"></i>
+        </div>
+
+        <div id="chat-area"></div>
+
+        <div class="chatbot-options">
+            <button class="chat-option" data-category="menu">🍽 Menu</button>
+            <button class="chat-option" data-category="delivery">🛵 Delivery</button>
+            <button class="chat-option" data-category="timing">⏱ Timings</button>
+            <button class="chat-option" data-category="support">📞 Support</button>
+        </div>
+    </div>
+    <!-- END CHATBOT WIDGET -->
+
     <!-- Loading Spinner -->
     <div class="loading-spinner" id="loadingSpinner">
         <div class="spinner"></div>
@@ -255,5 +284,54 @@
 
     <script src="js/main.js"></script>
     <script src="js/order.js"></script>
+    <script src="js/chatbot.js" defer></script> <!-- Added chatbot JS -->
+    <script>
+        // Check login status
+        const token = localStorage.getItem("token");
+
+        const loginLink = document.getElementById("loginLink");
+        const logoutLink = document.getElementById("logoutLink");
+        const mobileLoginLink = document.getElementById("mobileLoginLink"); // Added for mobile nav
+        const mobileLogoutLink = document.getElementById("mobileLogoutLink"); // Added for mobile nav
+
+        if (token) {
+            if (loginLink) loginLink.style.display = "none";
+            if (logoutLink) logoutLink.style.display = "inline-block";
+            if (mobileLoginLink) mobileLoginLink.style.display = "none"; // Handle mobile nav
+            if (mobileLogoutLink) mobileLogoutLink.style.display = "inline-block"; // Handle mobile nav
+        } else {
+            if (logoutLink) logoutLink.style.display = "none";
+            if (loginLink) loginLink.style.display = "inline-block";
+            if (mobileLogoutLink) mobileLogoutLink.style.display = "none"; // Handle mobile nav
+            if (mobileLoginLink) mobileLoginLink.style.display = "inline-block"; // Handle mobile nav
+        }
+
+        if (logoutLink) {
+            logoutLink.addEventListener("click", (e) => {
+                e.preventDefault(); // Prevent default link behavior
+                localStorage.removeItem("token");
+                window.location.reload();
+            });
+        }
+        
+        if (mobileLogoutLink) { // Add event listener for mobile logout
+            mobileLogoutLink.addEventListener("click", (e) => {
+                e.preventDefault(); // Prevent default link behavior
+                localStorage.removeItem("token");
+                window.location.reload();
+            });
+        }
+
+        // restrict pages
+        function checkAuthAndGo(page) {
+            if (!localStorage.getItem("token")) {
+                alert("⚠ Please login before accessing this feature.");
+                window.location.href = "login.html";
+                return;
+            }
+            window.location.href = page;
+        }
+    </script>
 </body>
 </html>
+<!-- python -m http.server 5500 -->
