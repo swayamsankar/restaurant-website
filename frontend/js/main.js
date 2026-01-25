@@ -1,7 +1,8 @@
 // =========================
 // GLOBAL API URL
 // =========================
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://gastronome-restaurant.onrender.com/api";
+
 
 
 // =========================
