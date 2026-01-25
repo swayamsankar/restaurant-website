@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://gastronome-restaurant.onrender.com/api";
 
 async function signup(){
   const name = document.getElementById("name").value.trim();
@@ -33,7 +33,6 @@ async function login(){
   const data = await res.json();
   if (res.ok && data.token) {
     localStorage.setItem("token", data.token);
-    // optionally store user info
     localStorage.setItem("user", JSON.stringify(data.user || {}));
     window.location.href = "index.html";
   } else {
