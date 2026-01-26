@@ -110,7 +110,10 @@ http://localhost:5500
 <img width="1877" height="911" alt="image" src="https://github.com/user-attachments/assets/493ce24c-7b6d-43bc-a732-327aa060f810" />
 
 
+## 🌐 Live Demo
 
+*https://gastronome-restaurant-website.onrender.com*
+*https://gastronome-restaurant.onrender.com*
 
 
 
