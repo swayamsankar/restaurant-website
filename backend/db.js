@@ -7,15 +7,18 @@ const db = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   port: process.env.DB_PORT,
-  ssl: { rejectUnauthorized: true }
+
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
-db.getConnection((err, conn) => {
+db.getConnection((err, connection) => {
   if (err) {
     console.error("DB ERROR:", err.message);
   } else {
-    console.log("DB CONNECTED");
-    conn.release();
+    console.log("✅ DB CONNECTED SUCCESSFULLY");
+    connection.release();
   }
 });
 
