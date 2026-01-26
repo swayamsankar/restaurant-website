@@ -114,7 +114,7 @@ http://localhost:5500
 
 https://gastronome-restaurant-website.onrender.com- **frontend**
 
-https://gastronome-restaurant.onrender.com-**Backend**
+https://gastronome-restaurant.onrender.com- **Backend**
 
 
 
