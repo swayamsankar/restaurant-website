@@ -11,7 +11,7 @@ This project enables users to explore the restaurant, register and log in secure
 * 🔑 Secure Password Hashing with bcrypt
 * 👤 User Profile Page
 * 🍔 Online Food Ordering
-* 🪑 Table Reservation System
+* 🪑 Table Reservation Systems
 * 🌐 RESTful APIs built with Express
 * 🗄️ MySQL Database Integration
 * 🔄 CORS Enabled for Frontend–Backend Communication
