@@ -61,6 +61,9 @@ restaurant-website/
 ```
 
 ---
+# Architecture Diagram
+<img width="1440" height="1380" alt="image" src="https://github.com/user-attachments/assets/041920ca-bb67-4ad2-9e82-8e4cb408a9e6" />
+
 
 ## ⚙️ Setup Instructions
 
